@@ -1,3 +1,1 @@
-# reedsemi-mail_service
-
-test
+# reedsemi-mail-service
