@@ -4,3 +4,7 @@ import { ok } from "../utils/response.ts";
 export function getAll({ response }: Context) {
   return ok(response, "ok");
 }
+
+export default {
+  getAll,
+};

@@ -1,7 +1,7 @@
 export type Email = {
-  name: string;
-  company: string;
-  email: string;
+  from: string;
+  organization: string;
+  address: string;
   phone: string;
   content: string;
   createdOn: Date;
