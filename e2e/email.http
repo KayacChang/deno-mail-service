@@ -1,0 +1,3 @@
+
+### GET ALL EMAIL
+GET http://localhost:3000/email
