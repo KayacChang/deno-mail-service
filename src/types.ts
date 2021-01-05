@@ -1,8 +1,8 @@
 export type Email = {
-  from: string;
+  send_from: string;
   organization: string;
   address: string;
   phone: string;
   content: string;
-  createdOn: Date;
+  created_on: Date;
 };
