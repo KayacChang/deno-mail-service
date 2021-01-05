@@ -1,5 +1,5 @@
 import { Pool } from "https://deno.land/x/postgres/mod.ts";
-import { QueryConfig } from "https://deno.land/x/postgres/query.ts";
+import { QueryConfig } from "https://deno.land/x/postgres@v0.4.6/query.ts";
 
 const env = Deno.env;
 
