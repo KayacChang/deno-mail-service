@@ -36,7 +36,21 @@ export async function add({ request, response }: Context) {
       [
         T,
         (body: Email) =>
-          insert("email", body)
+          fetch("https://api.sendgrid.com/v3/mail/send", {
+            method: "POST",
+            headers: {
+              Authorization:
+                "Bearer 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",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              personalizations: [{ to: [{ email: "egg734631@gmail.com" }] }],
+              from: { email: "info@em1217.lexionlu.xyz" },
+              subject: "Hello, World!",
+              content: [{ type: "text/plain", value: JSON.stringify(body) }],
+            }),
+          })
+            .then(() => insert("email", body))
             .then(({ rows }: QueryResult) => rows)
             .then(map(toEmail))
             .then(head)
