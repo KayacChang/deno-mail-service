@@ -24,4 +24,22 @@ export async function query(sql: string | QueryConfig) {
   return result;
 }
 
-export default { query };
+export function insert<T>(table: string, data: T) {
+  const keys = Object.keys(data);
+  const values = Object.values(data);
+
+  return query({
+    text: `
+      INSERT INTO ${table} 
+        ( ${keys.join()} ) 
+      VALUES
+        ( ${keys.map((_, idx) => `$${idx + 1}`).join()} )
+      RETURNING
+        *
+      ;
+    `,
+    args: values,
+  });
+}
+
+export default { query, insert };

@@ -1,7 +1,8 @@
 import { Response } from "https://deno.land/x/oak/mod.ts";
 import { Status } from "https://deno.land/x/std/http/http_status.ts";
+import curry from "https://deno.land/x/ramda@v0.27.2/source/curry.js";
 
-export function ok<T>(response: Response, data: T) {
+export const ok = curry(<T>(response: Response, data: T) => {
   return Object.assign(response, {
     status: Status.OK,
     body: {
@@ -9,9 +10,9 @@ export function ok<T>(response: Response, data: T) {
       data,
     },
   });
-}
+});
 
-export function created<T>(response: Response, data: T) {
+export const created = curry(<T>(response: Response, data: T) => {
   return Object.assign(response, {
     status: Status.Created,
     body: {
@@ -19,9 +20,9 @@ export function created<T>(response: Response, data: T) {
       data,
     },
   });
-}
+});
 
-export function badRequest(response: Response, msg: string) {
+export const badRequest = curry((response: Response, msg: string) => {
   return Object.assign(response, {
     status: Status.BadRequest,
     body: {
@@ -29,4 +30,4 @@ export function badRequest(response: Response, msg: string) {
       msg,
     },
   });
-}
+});
