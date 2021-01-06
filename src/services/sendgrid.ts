@@ -1,5 +1,5 @@
-import { Status } from "https://deno.land/x/std/http/http_status.ts";
-import { HttpError } from "https://deno.land/x/oak@v6.4.0/httpError.ts";
+import { Status, HttpError } from "../def.ts";
+
 import { Email } from "../types.ts";
 import { postJSON } from "../utils/request.ts";
 

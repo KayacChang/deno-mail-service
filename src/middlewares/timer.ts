@@ -1,4 +1,4 @@
-import { Middleware } from "https://deno.land/x/oak/mod.ts";
+import { Middleware } from "../def.ts";
 
 const timer: Middleware = async ({ response }, next) => {
   const start = Date.now();

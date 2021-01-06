@@ -16,7 +16,7 @@ docker-compose up --build -d
 - [x] Send Email by using Sendgrid Service
 
 - [x] Defer insert process
-- [ ] Create def.ts [Managing dependencies](https://deno.land/manual@v1.6.3/examples/manage_dependencies)
+- [x] Create def.ts [Managing dependencies](https://deno.land/manual@v1.6.3/examples/manage_dependencies)
 - [ ] Docker
 - [ ] Read Email Template from File, see [Read and write files](https://deno.land/manual@v1.6.3/examples/read_write_files)
 

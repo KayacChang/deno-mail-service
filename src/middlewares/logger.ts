@@ -1,5 +1,4 @@
-import { info } from "https://deno.land/std/log/mod.ts";
-import { Middleware } from "https://deno.land/x/oak/mod.ts";
+import { info, Middleware } from "../def.ts";
 
 const logger: Middleware = async ({ request, response }, next) => {
   await next();

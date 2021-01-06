@@ -1,5 +1,5 @@
-import { Application } from "https://deno.land/x/oak/mod.ts";
-import { info, error } from "https://deno.land/std/log/mod.ts";
+import { Application } from "./def.ts";
+import { info, error } from "./def.ts";
 
 import Logger from "./middlewares/logger.ts";
 import Timer from "./middlewares/timer.ts";

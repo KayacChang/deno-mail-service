@@ -1,5 +1,5 @@
-import { RouterContext as Context } from "https://deno.land/x/oak/mod.ts";
 import {
+  RouterContext as Context,
   cond,
   complement,
   has as _has,
@@ -7,8 +7,8 @@ import {
   map as _map,
   curry,
   thunkify,
-} from "https://deno.land/x/ramda/mod.ts";
-import { QueryResult } from "https://deno.land/x/postgres@v0.4.6/query.ts";
+  QueryResult,
+} from "../def.ts";
 
 import { query, insert } from "../databases/postgres.ts";
 import { badRequest, created, ok } from "../utils/response.ts";

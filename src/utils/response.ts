@@ -1,6 +1,4 @@
-import { Response } from "https://deno.land/x/oak/mod.ts";
-import { Status } from "https://deno.land/x/std/http/http_status.ts";
-import curry from "https://deno.land/x/ramda@v0.27.2/source/curry.js";
+import { Response, Status, curry } from "../def.ts";
 
 export const ok = curry(<T>(response: Response, data: T) => {
   return Object.assign(response, {

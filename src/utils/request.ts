@@ -1,4 +1,4 @@
-import { mergeDeepRight } from "https://deno.land/x/ramda/mod.ts";
+import { mergeDeepRight } from "../def.ts";
 
 export function post(url: string, init: RequestInit = {}) {
   return fetch(url, {

@@ -1,18 +1,14 @@
-import { Pool } from "https://deno.land/x/postgres/mod.ts";
-import { QueryConfig } from "https://deno.land/x/postgres@v0.4.6/query.ts";
-import curry from "https://deno.land/x/ramda@v0.27.2/source/curry.js";
-
-const env = Deno.env;
+import { Pool, QueryConfig, curry } from "../def.ts";
 
 const pool = new Pool(
   {
-    user: env.get("PG_USER"),
-    database: env.get("PG_DATABASE"),
-    password: env.get("PG_PASSWORD"),
-    hostname: env.get("PG_HOST"),
-    port: Number(env.get("PG_PORT") || 5432),
+    user: Deno.env.get("PG_USER"),
+    database: Deno.env.get("PG_DATABASE"),
+    password: Deno.env.get("PG_PASSWORD"),
+    hostname: Deno.env.get("PG_HOST"),
+    port: Number(Deno.env.get("PG_PORT") || 5432),
   },
-  Number(env.get("PG_CONNECTIONS") || 20)
+  Number(Deno.env.get("PG_CONNECTIONS") || 20)
 );
 
 export async function query(sql: string | QueryConfig) {

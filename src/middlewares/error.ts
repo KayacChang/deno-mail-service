@@ -1,8 +1,4 @@
-import {
-  Middleware,
-  isHttpError,
-  Status,
-} from "https://deno.land/x/oak/mod.ts";
+import { Middleware, isHttpError, Status } from "../def.ts";
 import { badRequest, notFound } from "../utils/response.ts";
 
 const error: Middleware = ({ response }, next) => {

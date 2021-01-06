@@ -1,4 +1,4 @@
-import { Router } from "https://deno.land/x/oak/mod.ts";
+import { Router } from "./def.ts";
 
 import Email from "./controllers/email.ts";
 import { hasBody, isJSON } from "./utils/decorator.ts";

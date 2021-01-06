@@ -1,6 +1,5 @@
-import { RouterContext as Context } from "https://deno.land/x/oak/mod.ts";
+import { RouterContext as Context, curry } from "../def.ts";
 import { badRequest } from "../utils/response.ts";
-import { curry } from "https://deno.land/x/ramda/mod.ts";
 
 type RouterFn = (context: Context) => void;
 
