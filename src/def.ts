@@ -2,6 +2,9 @@
 export { info, error } from "https://deno.land/std@0.83.0/log/mod.ts";
 export { Status } from "https://deno.land/std@0.83.0/http/http_status.ts";
 
+// env
+import "https://deno.land/x/dotenv@v2.0.0/load.ts";
+
 // oak
 import {
   Application,

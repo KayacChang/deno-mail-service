@@ -2,7 +2,13 @@
 
 ## Script
 
-### Start
+### Development
+
+```
+denon start
+```
+
+### Depolyment
 
 ```
 docker-compose up --build -d
@@ -17,7 +23,7 @@ docker-compose up --build -d
 
 - [x] Defer insert process
 - [x] Create def.ts [Managing dependencies](https://deno.land/manual@v1.6.3/examples/manage_dependencies)
-- [ ] Docker
+- [x] Docker
 - [ ] Read Email Template from File, see [Read and write files](https://deno.land/manual@v1.6.3/examples/read_write_files)
 
 - [ ] Migarate to std http webserver
