@@ -24,6 +24,4 @@ docker-compose up --build -d
 - [x] Defer insert process
 - [x] Create def.ts [Managing dependencies](https://deno.land/manual@v1.6.3/examples/manage_dependencies)
 - [x] Docker
-- [ ] Read Email Template from File, see [Read and write files](https://deno.land/manual@v1.6.3/examples/read_write_files)
-
-- [ ] Migarate to std http webserver
+- [x] Read Email Template from File, see [Read and write files](https://deno.land/manual@v1.6.3/examples/read_write_files)

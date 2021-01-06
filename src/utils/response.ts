@@ -30,6 +30,16 @@ export const badRequest = curry((response: Response, msg: string) => {
   });
 });
 
+export const unauthorized = curry((response: Response, msg: string) => {
+  return Object.assign(response, {
+    status: Status.Unauthorized,
+    body: {
+      success: false,
+      msg,
+    },
+  });
+});
+
 export const notFound = curry((response: Response, msg: string) => {
   return Object.assign(response, {
     status: Status.NotFound,

@@ -1,5 +1,5 @@
 import { Middleware, isHttpError, Status } from "../def.ts";
-import { badRequest, notFound } from "../utils/response.ts";
+import { badRequest, notFound, unauthorized } from "../utils/response.ts";
 
 const error: Middleware = ({ response }, next) => {
   return next().catch((err) => {
@@ -12,6 +12,8 @@ const error: Middleware = ({ response }, next) => {
         return notFound(response, err.message);
       case Status.BadRequest:
         return badRequest(response, err.message);
+      case Status.Unauthorized:
+        return unauthorized(response, err.message);
 
       default:
         throw err;

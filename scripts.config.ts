@@ -7,7 +7,7 @@ const config: DenonConfig = {
       cmd: "deno run src/app.ts",
       desc: "run service",
       env: env(),
-      allow: ["env", "net"],
+      allow: ["env", "read", "net"],
     },
   },
 };

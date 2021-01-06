@@ -36,3 +36,6 @@ export type {
   QueryResult,
 } from "https://deno.land/x/postgres@v0.4.6/query.ts";
 export { Pool } from "https://deno.land/x/postgres@v0.4.6/mod.ts";
+
+// ejs
+export { renderToString } from "https://deno.land/x/dejs/mod.ts";
