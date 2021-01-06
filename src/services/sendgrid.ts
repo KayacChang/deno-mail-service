@@ -1,4 +1,5 @@
 import { Status } from "https://deno.land/x/std/http/http_status.ts";
+import { HttpError } from "https://deno.land/x/oak@v6.4.0/httpError.ts";
 import { Email } from "../types.ts";
 import { postJSON } from "../utils/request.ts";
 
@@ -42,7 +43,10 @@ export async function send(email: Email) {
   });
 
   if (result.status !== Status.Accepted) {
-    throw new Error(String(result.status));
+    throw Object.assign(new HttpError(), {
+      status: result.status,
+      message: `Error occured when send request to sendgrid mail service`,
+    });
   }
 
   return email;

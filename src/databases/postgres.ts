@@ -1,5 +1,6 @@
 import { Pool } from "https://deno.land/x/postgres/mod.ts";
 import { QueryConfig } from "https://deno.land/x/postgres@v0.4.6/query.ts";
+import curry from "https://deno.land/x/ramda@v0.27.2/source/curry.js";
 
 const env = Deno.env;
 
@@ -19,27 +20,27 @@ export async function query(sql: string | QueryConfig) {
 
   const result = await client.query(sql);
 
-  client.release();
+  queueMicrotask(() => client.release());
 
   return result;
 }
 
-export function insert<T>(table: string, data: T) {
+export const insert = curry(<T>(table: string, data: T) => {
   const keys = Object.keys(data);
   const values = Object.values(data);
 
   return query({
     text: `
-      INSERT INTO ${table} 
-        ( ${keys.join()} ) 
-      VALUES
-        ( ${keys.map((_, idx) => `$${idx + 1}`).join()} )
-      RETURNING
-        *
-      ;
-    `,
+        INSERT INTO ${table} 
+          ( ${keys.join()} ) 
+        VALUES
+          ( ${keys.map((_, idx) => `$${idx + 1}`).join()} )
+        RETURNING
+          *
+        ;
+      `,
     args: values,
   });
-}
+});
 
 export default { query, insert };

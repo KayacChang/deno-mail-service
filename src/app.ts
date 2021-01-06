@@ -1,8 +1,9 @@
 import { Application } from "https://deno.land/x/oak/mod.ts";
 import { info, error } from "https://deno.land/std/log/mod.ts";
 
-import logger from "./middlewares/logger.ts";
-import timer from "./middlewares/timer.ts";
+import Logger from "./middlewares/logger.ts";
+import Timer from "./middlewares/timer.ts";
+import Error from "./middlewares/error.ts";
 import router from "./router.ts";
 
 const app = new Application();
@@ -16,8 +17,9 @@ app.addEventListener("listen", ({ hostname, port, secure }) => {
 
 app.addEventListener("error", (event) => error(event.error));
 
-app.use(logger);
-app.use(timer);
+app.use(Error);
+app.use(Logger);
+app.use(Timer);
 app.use(router.routes());
 app.use(router.allowedMethods());
 

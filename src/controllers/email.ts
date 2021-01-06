@@ -4,9 +4,9 @@ import {
   complement,
   has as _has,
   T,
-  head,
   map as _map,
   curry,
+  thunkify,
 } from "https://deno.land/x/ramda/mod.ts";
 import { QueryResult } from "https://deno.land/x/postgres@v0.4.6/query.ts";
 
@@ -26,7 +26,7 @@ export async function getAll({ response }: Context) {
 }
 
 export async function add({ request, response }: Context) {
-  const resp = (msg: string) => () => badRequest(response, msg);
+  const resp = thunkify(badRequest)(response);
 
   await Promise.resolve(request.body().value).then(
     cond([
@@ -38,12 +38,11 @@ export async function add({ request, response }: Context) {
       [
         T,
         (email: Email) =>
-          SendGrid.send(email)
-            .then((email) => insert("email", email))
-            .then(({ rows }: QueryResult) => rows)
-            .then(map(toEmail))
-            .then(head)
-            .then(created(response)),
+          SendGrid.send(email).then((email) => {
+            queueMicrotask(() => insert("email", email));
+
+            created(response, email);
+          }),
       ],
     ])
   );

@@ -31,3 +31,13 @@ export const badRequest = curry((response: Response, msg: string) => {
     },
   });
 });
+
+export const notFound = curry((response: Response, msg: string) => {
+  return Object.assign(response, {
+    status: Status.NotFound,
+    body: {
+      success: false,
+      msg,
+    },
+  });
+});
