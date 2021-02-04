@@ -13,17 +13,17 @@ export interface Email {
 export const toEmail = ([
   id,
   send_from,
-  organization = "",
-  address = "",
-  phone = "",
+  organization,
+  address,
+  phone,
   content,
   created_on,
 ]: any[]) => ({
   id,
   send_from,
-  organization,
-  address,
-  phone,
+  organization: organization || "",
+  address: address || "",
+  phone: phone || "",
   content,
   created_on: new Date(created_on),
 });
