@@ -24,7 +24,9 @@ export async function send(email: Email) {
       Authorization: KEY,
     },
     body: JSON.stringify({
-      personalizations: [{ to: [{ email: RECEIVER }] }],
+      personalizations: [
+        { to: RECEIVER.split(",").map((email) => ({ email })) },
+      ],
       from: { email: SENDER },
       subject: TITLE,
       content: [

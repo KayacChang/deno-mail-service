@@ -9,7 +9,7 @@ Content-Type: application/json
 
 {
     "send_from": "kayac",
-    "address": "test@example.com",
+    "address": "testm",
     "phone": "123456",
     "content": "test"
 }
