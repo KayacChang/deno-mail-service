@@ -13,9 +13,9 @@ export interface Email {
 export const toEmail = ([
   id,
   send_from,
-  organization,
-  address,
-  phone,
+  organization = "",
+  address = "",
+  phone = "",
   content,
   created_on,
 ]: any[]) => ({
