@@ -8,6 +8,8 @@ import {
   curry,
   thunkify,
   QueryResult,
+  prop,
+  pipe,
 } from "../def.ts";
 
 import { query, insert } from "../databases/postgres.ts";
@@ -25,6 +27,12 @@ export async function getAll({ response }: Context) {
     .then(ok(response));
 }
 
+function isEmail(email: string) {
+  const validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+  return validRegex.test(email);
+}
+
 export async function add({ request, response }: Context) {
   const resp = thunkify(badRequest)(response);
 
@@ -33,6 +41,10 @@ export async function add({ request, response }: Context) {
       [hasNot("send_from"), resp("Request body should have [send_from]")],
       // [hasNot("organization"), resp("Request body should have [organization]")],
       [hasNot("address"), resp("Request body should have [address]")],
+      [
+        pipe(prop("address"), complement(isEmail)),
+        resp("Request email format not correct."),
+      ],
       // [hasNot("phone"), resp("Request body should have [phone]")],
       [hasNot("content"), resp("Request body should have [content]")],
       [
