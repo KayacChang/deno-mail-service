@@ -18,6 +18,10 @@ import {
 export { Application, Router, HttpError, isHttpError };
 export type { RouterContext, Response, Middleware };
 
+// cors
+import { oakCors } from "https://deno.land/x/cors/mod.ts";
+export { oakCors };
+
 // ramda
 export {
   curry,

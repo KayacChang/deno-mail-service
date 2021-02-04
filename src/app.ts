@@ -1,5 +1,4 @@
-import { Application } from "./def.ts";
-import { info, error } from "./def.ts";
+import { Application, info, error, oakCors } from "./def.ts";
 
 import Logger from "./middlewares/logger.ts";
 import Timer from "./middlewares/timer.ts";
@@ -17,6 +16,7 @@ app.addEventListener("listen", ({ hostname, port, secure }) => {
 
 app.addEventListener("error", (event) => error(event.error));
 
+app.use(oakCors());
 app.use(Error);
 app.use(Logger);
 app.use(Timer);
