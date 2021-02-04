@@ -21,9 +21,9 @@ export const toEmail = ([
 ]: any[]) => ({
   id,
   send_from,
-  organization: organization || "",
-  address: address || "",
-  phone: phone || "",
+  organization: organization,
+  address: address,
+  phone: phone,
   content,
   created_on: new Date(created_on),
 });

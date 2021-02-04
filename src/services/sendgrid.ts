@@ -30,7 +30,14 @@ export async function send(email: Email) {
       content: [
         {
           type: "text/plain",
-          value: await renderToString(EMAIL_TEMPLATE, email),
+          value: await renderToString(EMAIL_TEMPLATE, {
+            send_from: email.send_from,
+            organization: email.organization || "",
+            address: email.address || "",
+            phone: email.phone || "",
+            created_on: email.created_on,
+            content: email.content,
+          }),
         },
       ],
     }),
