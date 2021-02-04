@@ -31,9 +31,9 @@ export async function add({ request, response }: Context) {
   await Promise.resolve(request.body().value).then(
     cond([
       [hasNot("send_from"), resp("Request body should have [send_from]")],
-      [hasNot("organization"), resp("Request body should have [organization]")],
+      // [hasNot("organization"), resp("Request body should have [organization]")],
       [hasNot("address"), resp("Request body should have [address]")],
-      [hasNot("phone"), resp("Request body should have [phone]")],
+      // [hasNot("phone"), resp("Request body should have [phone]")],
       [hasNot("content"), resp("Request body should have [content]")],
       [
         T,
