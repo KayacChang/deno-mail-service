@@ -1,4 +1,4 @@
-# reedsemi-mail-service
+# deno service example
 
 ## Script
 
